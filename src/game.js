@@ -9,6 +9,7 @@ const config = {
 
     color: {
         smoke: 0xDDDDDD,
+        text: 0x101010,
         button: {
             text: 0x221100,
             selected: 0x333399,
