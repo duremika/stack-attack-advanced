@@ -45,5 +45,6 @@
         updateButtonSelection(this);
 
         this.input.keyboard.on('keydown-ENTER', goToMenu);
+        this.input.keyboard.on('keydown-ESC', goToMenu);
     }
 }

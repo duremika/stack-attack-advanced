@@ -53,6 +53,7 @@
         this.input.keyboard.on('keydown-ENTER', () => {
             this.buttons[this.selectedButtonIndex].callback(this);
         });
+        this.input.keyboard.on('keydown-ESC', goToMenu);
 
         const tutorial = JSON.parse(this.repository.get(Repository.TUTORIAL)) || {};
         this.add.image(2, 0, tutorial[Tutorial.MOVEMENT.description] ? Asset.CHECKBOX_YES : Asset.CHECKBOX_NO)

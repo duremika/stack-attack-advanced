@@ -70,6 +70,7 @@
         this.input.keyboard.on('keydown-ENTER', () => {
             this.buttons[this.selectedButtonIndex].callback(this);
         });
+        this.input.keyboard.on('keydown-ESC', goToMenu);
     }
 
     updateCharacterSelection() {

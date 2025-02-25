@@ -198,6 +198,15 @@ class GameScene extends Phaser.Scene {
     }
 
     create() {
+        if (this.tutorial) {
+            this.input.keyboard.on('keydown-ESC', () => {
+                this.scene.start(TutorialsListScene.KEY);
+            });
+        } else {
+            this.input.keyboard.on('keydown-ESC', () => {
+                this.scene.start(MenuScene.KEY);
+            });
+        }
         const settings = JSON.parse(this.repository.get(Repository.SETTINGS)) || {};
         if (settings.music) {
             this.backgroundMusic = this.sound.add(Asset.BACKGROUND_MUSIC);
