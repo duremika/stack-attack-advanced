@@ -1,5 +1,6 @@
 class Warehouse {
     static lastEntityId = 0;
+    static shadowZOffset = 0.01;
 
     constructor(stacker) {
         this.stats = new Stats();
@@ -14,60 +15,19 @@ class Warehouse {
         this.entities.add(entity);
     }
 
-    getSortedEntities() { // TODO туториал бонусов ящики накладываются на перья и гантели
+    getSortedEntities() {
         return Array.from(this.entities)
             .concat(this.stacker)
             .concat(this.stacker.head)
             .concat(...this.getShadows())
             .sort((a, b) => {
-                if (a instanceof CutShadow && b instanceof Stacker) {
-                    return -1;
-                } else if (b instanceof CutShadow && a instanceof Stacker) {
-                    return 1;
-                }
-                const zDiff = a.coordinates.z - b.coordinates.z;
-                const yDiff = a.coordinates.y - b.coordinates.y;
-                const xDiff = a.coordinates.x - b.coordinates.x;
-
-                let res;
-                if (this.stacker.direction === Direction.EAST ||
-                    this.stacker.direction === Direction.WEST) {
-                    res = this.compareByState(this.stacker.state, zDiff, yDiff, xDiff);
+                const diff = a.coordinates.z - b.coordinates.z;
+                if (Math.abs(diff) === Warehouse.shadowZOffset) {
+                    return diff;
                 } else {
-                    res = this.compareByState(this.stacker.state, zDiff, xDiff, yDiff);
-                }
-                if (res !== 0) {
-                    return res;
-                }
-                if (!(a instanceof Shadow || a instanceof CutShadow) && (b instanceof Shadow || b instanceof CutShadow)) {
-                    return 1;
-                }
-                if (!(b instanceof Shadow || b instanceof CutShadow) && (a instanceof Shadow || a instanceof CutShadow)) {
-                    return -1;
-                }
-                if (a instanceof Shadow && b instanceof Shadow) {
-                    res = a.entity.coordinates.z - b.entity.coordinates.z;
-                } else if (a instanceof CutShadow && b instanceof CutShadow) {
-                    res = a.coordinates.z - b.coordinates.z;
-                }
-                if (res !== 0) {
-                    return res;
-                }
-                if (a instanceof Shadow || a instanceof CutShadow) {
-                    return -1;
-                } else {
-                    return 1;
+                    return a.coordinates.depth() - b.coordinates.depth();
                 }
             });
-    }
-
-    compareByState(state, zDiff, primaryDiff, secondaryDiff) {
-        switch (state) {
-            case State.IDLE:
-                return primaryDiff || secondaryDiff || zDiff;
-            default:
-                return zDiff || primaryDiff || secondaryDiff;
-        }
     }
 
     getShadows() {
@@ -87,6 +47,7 @@ class Warehouse {
                 coordinates.z++;
             }
             if (coordinates.z !== entity.coordinates.z) {
+                coordinates.z -= Warehouse.shadowZOffset;
                 shadows.push(new Shadow(coordinates, entity));
             }
         });
@@ -106,6 +67,7 @@ class Warehouse {
                 }
                 coordinates.z++;
             }
+            coordinates.z -= Warehouse.shadowZOffset;
             shadows.push(new Shadow(coordinates, this.stacker));
         } else {
             let forward;
@@ -200,11 +162,16 @@ class Warehouse {
                     this.stacker.coordinates.y,
                     forward.z
                 );
+                coordinates.z -= Warehouse.shadowZOffset;
                 shadows.push(new Shadow(coordinates, this.stacker));
             } else if (forward.z > back.z) {
+                forward.z -= Warehouse.shadowZOffset;
+                back.z -= Warehouse.shadowZOffset;
                 shadows.push(new CutShadow(forward, forwardPercent, forwardDirection));
                 shadows.push(new CutShadow(back, backPercent, backDirection));
             } else {
+                forward.z -= Warehouse.shadowZOffset;
+                back.z -= Warehouse.shadowZOffset;
                 shadows.push(new CutShadow(forward, forwardPercent, forwardDirection));
                 shadows.push(new CutShadow(back, backPercent, backDirection));
             }
@@ -415,8 +382,8 @@ class Warehouse {
         let forDestroy = [];
         this.entities.forEach(entity => {
             if (this.stacker.coordinates.x - 1.75 <= entity.coordinates.x && entity.coordinates.x <= this.stacker.coordinates.x + 1.75
-            && this.stacker.coordinates.y - 1.75 <= entity.coordinates.y && entity.coordinates.y <= this.stacker.coordinates.y + 1.75
-            && this.stacker.coordinates.z - 2.75 <= entity.coordinates.z && entity.coordinates.z <= this.stacker.coordinates.z + 2.75) {
+                && this.stacker.coordinates.y - 1.75 <= entity.coordinates.y && entity.coordinates.y <= this.stacker.coordinates.y + 1.75
+                && this.stacker.coordinates.z - 2.75 <= entity.coordinates.z && entity.coordinates.z <= this.stacker.coordinates.z + 2.75) {
                 forDestroy.push(entity);
             }
         });

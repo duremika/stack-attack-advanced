@@ -75,4 +75,8 @@ class Coordinates {
             coordinates.y <= this.y + 0.75 && this.y - 0.75 <= coordinates.y &&
             coordinates.z >= this.z - 0.75 && this.z > coordinates.z
     }
+
+    depth() {
+        return this.y + this.x + this.z;
+    }
 }
