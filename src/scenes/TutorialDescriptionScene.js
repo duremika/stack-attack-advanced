@@ -2,12 +2,17 @@
 
     static KEY = "TutorialDescriptionScene";
     static description = new Map([
-        [Tutorial.MOVEMENT, "Нужно передвинуть\nсиний ящик и\nподняться на верх\nгоры серых ящиков\nСтрелки клавиатуры\nдля движения\nПробел для прыжка"],
-        [Tutorial.REMOVE_BOXES, "Уничтожь все ящики\nвыстроив комбинации\nпо цвету или\nзаполнив ряд"],
-        [Tutorial.BOMBS, "Используя бомбы\nзабери сердце\nСерая - взрывает\nвсё вокруг грузчика\nЦветная - ящики\nэтого цвета"],
-        [Tutorial.ITEMS, "Очисти склад\nМолоток разбивает\nто что впереди\nМагнит притягивает\nто что впереди\nПесочные часы\nостанавливают сброс\nновых предметов"],
-        [Tutorial.POWER_UPS, "Забери сердце\nиспользуя бонусы\nПеро дает\nдвойной прыжок\nШтанга позволяет\nтолкать два ящика"],
-    ])
+        [Tutorial.MOVEMENT, "Передвиньте синий\nящик, поднимитесь\nна вершину горы из\nсерых ящиков\n\n" +
+        "Стрелки - для\nдвижения.\nПробел - для\nпрыжка"],
+        [Tutorial.REMOVE_BOXES, "Очистите склад\n\nУничтожьте все\nящики, выстраивая\n" +
+        "комбинации\nпо цвету или\nзаполняя ряды"],
+        [Tutorial.BOMBS, "Используйте бомбы,\nчтобы забрать\nсердце.\n\n" +
+        "Серая бомба -\nвзрывает всё\nвокруг грузчика.\nЦветная бомба -\nуничтожает ящики\nсоответствующего\nцвета"],
+        [Tutorial.ITEMS, "Очистите склад\n\nМолоток -\nразбивает предмет\nвпереди.\n" +
+        "Магнит -\nпритягивает\nпредмет впереди.\nПесочные часы -\nостанавливают\nпоявление новых\nпредметов"],
+        [Tutorial.POWER_UPS, "Заберите сердце,\nиспользуя бонусы\n\nПеро - даёт\nдвойной прыжок.\n" +
+        "Штанга -\nпозволяет толкать\nдва ящика\nодновременно"],
+    ]);
 
     constructor() {
         super(TutorialDescriptionScene.KEY);
@@ -20,7 +25,9 @@
     create() {
         this.add.rectangle(0, 0, config.width, config.height, config.color.smoke)
             .setOrigin(0, 0);
-        this.text = this.add.bitmapText(0, 0, Asset.FONT_BASIS33, TutorialDescriptionScene.description.get(this.params.tutorial), 16)
+        this.text = this.add.bitmapText(0, 0, Asset.FONT_BASIS33,
+            TutorialDescriptionScene.description.get(this.params.tutorial), 16)
+            .setLineSpacing(-4)
             .setTint(config.color.text)
             .setOrigin(0);
 

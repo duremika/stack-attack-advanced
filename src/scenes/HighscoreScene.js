@@ -23,10 +23,10 @@
             .setOrigin(0, 0);
         let y = 55;
         (JSON.parse(this.repository.get(Repository.TOP_PLAYERS)) || []).forEach((entry) => {
-            let text = entry.player.substring(0, 10);
+            let text = entry.player.substring(0, 10).replace(' ', '  ');
             text += ':';
-            while (text.length < 11) {
-                text += ' ';
+            for (let i = text.length; i <= 10; i++) {
+                text += '  ';
             }
             text += entry.score;
             this.add.bitmapText(5, y, Asset.FONT_BASIS33, text, 16)
