@@ -6,6 +6,7 @@ class MenuScene extends Phaser.Scene {
         super(MenuScene.KEY);
         this.params = {
             repository: new LocalStorage(),
+            lang: getLang(),
         };
     }
 
@@ -13,10 +14,10 @@ class MenuScene extends Phaser.Scene {
         this.add.image(1, 0, Asset.SPLASH).setOrigin(0);
 
         this.buttons = [
-            createButton(this, 0, 129, 'Начать игру', this.startGame),
-            createButton(this, 0, 141, 'Настройки', this.openSettings),
-            createButton(this, 0, 153, 'Туториал', this.openTutorial),
-            createButton(this, 0, 165, 'Рекорды', this.openHighscore)
+            createButton(this, 0, 129, strings[this.params.lang].startGame, this.startGame),
+            createButton(this, 0, 141, strings[this.params.lang].settings, this.openSettings),
+            createButton(this, 0, 153, strings[this.params.lang].tutorial, this.openTutorial),
+            createButton(this, 0, 165, strings[this.params.lang].highscores, this.openHighscore)
         ];
         this.selectedButtonIndex = 0;
         updateButtonSelection(this);

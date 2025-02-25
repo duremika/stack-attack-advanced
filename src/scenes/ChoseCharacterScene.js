@@ -1,21 +1,13 @@
 ﻿class CharacterSelectionScene extends Phaser.Scene {
 
     static KEY = 'CharacterSelectionScene';
-    static text = {
-        notYetAchieved: "Еще не открыт\n",
-        red: "Базовый персонаж",
-        blue: "Может толкать\nдва ящика за раз",
-        green: "Может прыгать\nв два раза выше",
-    };
 
     constructor() {
         super(CharacterSelectionScene.KEY);
     }
 
     init(params) {
-        this.params = {
-            repository: params.repository,
-        };
+        this.params = params;
     }
 
     preload() {
@@ -31,7 +23,7 @@
         this.selectedCharacterIndex = 0;
         this.selectedCharacter = this.add.image(config.width / 2, 0, Asset.PORTRAIT_RED)
             .setOrigin(0.5, 0);
-        this.text = this.add.bitmapText(0, 38, Asset.FONT_BASIS33, CharacterSelectionScene.text.red, 16)
+        this.text = this.add.bitmapText(0, 38, Asset.FONT_BASIS33, strings[this.params.lang].red, 16)
             .setTint(config.color.text)
             .setOrigin(0)
             .setDepth(1);
@@ -68,9 +60,9 @@
         };
 
         this.buttons = [
-            createButton(this, 0, 141, 'Следующий', rightAction),
-            createButton(this, 0, 153, 'Выбрать', selectAction),
-            createButton(this, 0, 165, 'В меню', goToMenu),
+            createButton(this, 0, 141, strings[this.params.lang].next, rightAction),
+            createButton(this, 0, 153, strings[this.params.lang].select, selectAction),
+            createButton(this, 0, 165, strings[this.params.lang].toMenu, goToMenu),
         ];
         this.selectedButtonIndex = 1;
         updateButtonSelection(this);
@@ -95,15 +87,15 @@
         switch (this.selectedCharacterIndex) {
             case 0:
                 this.selectedCharacter.setTexture(Asset.PORTRAIT_RED);
-                this.text.text = CharacterSelectionScene.text.red;
+                this.text.text = strings[this.params.lang].red;
                 break;
             case 1:
                 this.selectedCharacter.setTexture(Asset.PORTRAIT_BLUE);
-                this.text.text = `${this.score < 350 ? CharacterSelectionScene.text.notYetAchieved : ""}${CharacterSelectionScene.text.blue}`;
+                this.text.text = `${this.score < 350 ? strings[this.params.lang].notYetAchieved : ""}${strings[this.params.lang].blue}`;
                 break;
             case 2:
                 this.selectedCharacter.setTexture(Asset.PORTRAIT_GREEN);
-                this.text.text = `${this.score < 700 ? CharacterSelectionScene.text.notYetAchieved : ""}${CharacterSelectionScene.text.green}`;
+                this.text.text = `${this.score < 700 ? strings[this.params.lang].notYetAchieved : ""}${strings[this.params.lang].green}`;
                 break;
         }
     }

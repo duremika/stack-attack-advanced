@@ -33,11 +33,12 @@ class GameScene extends Phaser.Scene {
         this.lastPressedKey = null;
     }
 
-    init(data) {
-        this.repository = data.repository;
-        this.tutorial = data.tutorial;
+    init(params) {
+        this.repository = params.repository;
+        this.tutorial = params.tutorial;
+        this.lang = params.lang;
         this.warehouse = new Warehouse(
-            new Stacker(data.stackerColor, Direction.NORTH, Coordinates.randomXYonZ(0))
+            new Stacker(params.stackerColor, Direction.NORTH, Coordinates.randomXYonZ(0))
         );
         switch (this.tutorial) {
             case Tutorial.MOVEMENT:
@@ -311,13 +312,13 @@ class GameScene extends Phaser.Scene {
             .setDepth(1000)
             .setStrokeStyle(1, config.color.gameOver.backgroundFrame)
             .setOrigin(0.5, 0);
-        this.add.bitmapText(config.width / 2, 20, Asset.FONT_BASIS33, "Конец игры", 16)
+        this.add.bitmapText(config.width / 2, 20, Asset.FONT_BASIS33, strings[this.lang].gameOver, 16)
             .setDepth(1000)
             .setTint(config.color.gameOver.text)
             .setDropShadow(1, 1, 0x880000, 0.3)
             .setOrigin(0.5, 0);
 
-        this.add.bitmapText(5, 40, Asset.FONT_BASIS33, "Счет:", 16)
+        this.add.bitmapText(5, 40, Asset.FONT_BASIS33, strings[this.lang].score, 16)
             .setDepth(1000)
             .setTint(0x000000)
             .setOrigin(0, 0);
@@ -327,7 +328,7 @@ class GameScene extends Phaser.Scene {
             .setOrigin(0, 0);
 
 
-        this.add.bitmapText(5, 60, Asset.FONT_BASIS33, "Сброшено ящиков:", 16)
+        this.add.bitmapText(5, 60, Asset.FONT_BASIS33, strings[this.lang].boxesDropped, 16)
             .setDepth(1000)
             .setTint(0x000000)
             .setOrigin(0, 0);
@@ -336,7 +337,7 @@ class GameScene extends Phaser.Scene {
             .setTint(0x000000)
             .setOrigin(0, 0);
 
-        this.add.bitmapText(5, 80, Asset.FONT_BASIS33, "Линий уничтожено:", 16)
+        this.add.bitmapText(5, 80, Asset.FONT_BASIS33, strings[this.lang].linesRemoved, 16)
             .setDepth(1000)
             .setTint(0x000000)
             .setOrigin(0, 0);
@@ -345,7 +346,7 @@ class GameScene extends Phaser.Scene {
             .setTint(0x000000)
             .setOrigin(0, 0);
 
-        this.add.bitmapText(5, 100, Asset.FONT_BASIS33, "Комбинации:", 16)
+        this.add.bitmapText(5, 100, Asset.FONT_BASIS33, strings[this.lang].combinations, 16)
             .setDepth(1000)
             .setTint(0x000000)
             .setOrigin(0, 0);

@@ -6,16 +6,16 @@
     }
 
     init(params) {
-        this.repository = params.repository;
+        this.params = params;
     }
 
     create() {
-        const settings = JSON.parse(this.repository.get(Repository.SETTINGS)) || {
+        const settings = JSON.parse(this.params.repository.get(Repository.SETTINGS)) || {
             music: false,
         };
         this.add.rectangle(0, 0, config.width, config.height, config.color.smoke)
             .setOrigin(0, 0);
-        this.add.bitmapText(5, 20, Asset.FONT_BASIS33, "Музыка", 16)
+        this.add.bitmapText(5, 20, Asset.FONT_BASIS33, strings[this.params.lang].music, 16)
             .setTint(0x000000)
             .setOrigin(0, 0);
         const checkBox = this.add.rectangle(config.width - 20, 20, 15, 15, config.color.button.default)
@@ -28,7 +28,7 @@
         const change = () => {
             settings.music = !settings.music;
             musicCheckSprite.setTexture(settings.music ? Asset.CHECKBOX_YES : Asset.CHECKBOX_NO);
-            this.repository.save(Repository.SETTINGS, JSON.stringify(settings));
+            this.params.repository.save(Repository.SETTINGS, JSON.stringify(settings));
         };
         checkBox.on('pointerdown', change);
         checkBox.on('pointerover', () => checkBox.setFillStyle(config.color.button.selected));
@@ -38,7 +38,7 @@
             this.scene.start(MenuScene.KEY);
         };
         this.buttons = [
-            createButton(this, 0, config.height - 11, "В меню", goToMenu),
+            createButton(this, 0, config.height - 11, strings[this.params.lang].toMenu, goToMenu),
         ];
         this.selectedButtonIndex = 0;
         updateButtonSelection(this);

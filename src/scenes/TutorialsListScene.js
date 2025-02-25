@@ -7,11 +7,8 @@
     }
 
     init(params) {
-        this.repository = params.repository;
-        this.params = {
-            repository: params.repository,
-            stackerColor: Color.RED,
-        };
+        this.params = params;
+        this.params.stackerColor = Color.RED;
     }
 
     create() {
@@ -22,22 +19,22 @@
             this.scene.start(MenuScene.KEY);
         };
         this.buttons = [
-            createButton(this, 0, 0, '    Передвижение', () => {
+            createButton(this, 0, 0, strings[this.params.lang].movement, () => {
                 this.scene.start(TutorialDescriptionScene.KEY, Object.assign({tutorial: Tutorial.MOVEMENT}, this.params));
             }),
-            createButton(this, 0, 12, '    Сбор ящиков', () => {
+            createButton(this, 0, 12, strings[this.params.lang].removeBoxes, () => {
                 this.scene.start(TutorialDescriptionScene.KEY, Object.assign({tutorial: Tutorial.REMOVE_BOXES}, this.params));
             }),
-            createButton(this, 0, 24, '    Бомбы', () => {
+            createButton(this, 0, 24, strings[this.params.lang].bombs, () => {
                 this.scene.start(TutorialDescriptionScene.KEY, Object.assign({tutorial: Tutorial.BOMBS}, this.params));
             }),
-            createButton(this, 0, 36, '    Предметы', () => {
+            createButton(this, 0, 36, strings[this.params.lang].items, () => {
                 this.scene.start(TutorialDescriptionScene.KEY, Object.assign({tutorial: Tutorial.ITEMS}, this.params));
             }),
-            createButton(this, 0, 48, '    Бонусы', () => {
+            createButton(this, 0, 48, strings[this.params.lang].powerUps, () => {
                 this.scene.start(TutorialDescriptionScene.KEY, Object.assign({tutorial: Tutorial.POWER_UPS}, this.params));
             }),
-            createButton(this, 0, config.height - 11, "В меню", goToMenu),
+            createButton(this, 0, config.height - 11, strings[this.params.lang].toMenu, goToMenu),
         ];
         this.selectedButtonIndex = 0;
         updateButtonSelection(this);
@@ -55,7 +52,7 @@
         });
         this.input.keyboard.on('keydown-ESC', goToMenu);
 
-        const tutorial = JSON.parse(this.repository.get(Repository.TUTORIAL)) || {};
+        const tutorial = JSON.parse(this.params.repository.get(Repository.TUTORIAL)) || {};
         this.add.image(2, 0, tutorial[Tutorial.MOVEMENT.description] ? Asset.CHECKBOX_YES : Asset.CHECKBOX_NO)
             .setOrigin(0);
         this.add.image(2, 12, tutorial[Tutorial.REMOVE_BOXES.description] ? Asset.CHECKBOX_YES : Asset.CHECKBOX_NO)
