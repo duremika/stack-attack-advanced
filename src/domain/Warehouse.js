@@ -304,9 +304,6 @@ class Warehouse {
     }
 
     useItemStacker() {
-        if (!this.stacker.item || this.usingItem) {
-            return;
-        }
         switch (this.stacker.item.type) {
             case ItemType.HOUR_GLASS:
                 this.pauseDrop = true;

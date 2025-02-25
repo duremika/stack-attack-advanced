@@ -7,7 +7,7 @@
         <page id="0" file="basis33.png"/>
     </pages>
     <chars count="131">
-        <char id="32" x="0" y="0" width="0" height="0" xoffset="0" yoffset="0" xadvance="21" page="0"
+        <char id="32" x="0" y="0" width="0" height="0" xoffset="0" yoffset="0" xadvance="12" page="0"
               chnl="15"/><!--   -->
         <char id="45" x="234" y="195" width="17" height="5" xoffset="2" yoffset="20" xadvance="21" page="0"
               chnl="15"/><!-- - -->
@@ -163,7 +163,7 @@
               chnl="15"/><!-- К -->
         <char id="1051" x="102" y="147" width="20" height="26" xoffset="2" yoffset="8" xadvance="21" page="0"
               chnl="15"/><!-- Л -->
-        <char id="1052" x="123" y="147" width="23" height="26" xoffset="-1" yoffset="8" xadvance="21" page="0"
+        <char id="1052" x="123" y="147" width="23" height="26" xoffset="2" yoffset="8" xadvance="24" page="0"
               chnl="15"/><!-- М -->
         <char id="1053" x="147" y="147" width="20" height="26" xoffset="2" yoffset="8" xadvance="21" page="0"
               chnl="15"/><!-- Н -->
@@ -211,7 +211,7 @@
               chnl="15"/><!-- в -->
         <char id="1075" x="0" y="243" width="17" height="20" xoffset="2" yoffset="14" xadvance="21" page="0"
               chnl="15"/><!-- г -->
-        <char id="1076" x="66" y="120" width="23" height="26" xoffset="-1" yoffset="14" xadvance="21" page="0"
+        <char id="1076" x="66" y="120" width="23" height="26" xoffset="2" yoffset="14" xadvance="24" page="0"
               chnl="15"/><!-- д -->
         <char id="1077" x="18" y="222" width="17" height="20" xoffset="2" yoffset="14" xadvance="21" page="0"
               chnl="15"/><!-- е -->
@@ -257,7 +257,7 @@
               chnl="15"/><!-- щ -->
         <char id="1098" x="144" y="222" width="20" height="20" xoffset="-1" yoffset="14" xadvance="21" page="0"
               chnl="15"/><!-- ъ -->
-        <char id="1099" x="144" y="243" width="20" height="20" xoffset="2" yoffset="14" xadvance="21" page="0"
+        <char id="1099" x="144" y="243" width="20" height="20" xoffset="2" yoffset="14" xadvance="24" page="0"
               chnl="15"/><!-- ы -->
         <char id="1100" x="165" y="222" width="14" height="20" xoffset="5" yoffset="14" xadvance="21" page="0"
               chnl="15"/><!-- ь -->

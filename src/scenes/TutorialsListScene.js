@@ -22,20 +22,20 @@
             this.scene.start(MenuScene.KEY);
         };
         this.buttons = [
-            createButton(this, 0, 0, '  Передвижение', () => {
-                this.scene.start(GameScene.KEY, Object.assign({tutorial: Tutorial.MOVEMENT}, this.params))
+            createButton(this, 0, 0, '    Передвижение', () => {
+                this.scene.start(TutorialDescriptionScene.KEY, Object.assign({tutorial: Tutorial.MOVEMENT}, this.params));
             }),
-            createButton(this, 0, 12, '  Сбор ящиков', () => {
-                this.scene.start(GameScene.KEY, Object.assign({tutorial: Tutorial.REMOVE_BOXES}, this.params))
+            createButton(this, 0, 12, '    Сбор ящиков', () => {
+                this.scene.start(TutorialDescriptionScene.KEY, Object.assign({tutorial: Tutorial.REMOVE_BOXES}, this.params));
             }),
-            createButton(this, 0, 24, '  Бомбы', () => {
-                this.scene.start(GameScene.KEY, Object.assign({tutorial: Tutorial.BOMBS}, this.params))
+            createButton(this, 0, 24, '    Бомбы', () => {
+                this.scene.start(TutorialDescriptionScene.KEY, Object.assign({tutorial: Tutorial.BOMBS}, this.params));
             }),
-            createButton(this, 0, 36, '  Предметы', () => {
-                this.scene.start(GameScene.KEY, Object.assign({tutorial: Tutorial.ITEMS}, this.params))
+            createButton(this, 0, 36, '    Предметы', () => {
+                this.scene.start(TutorialDescriptionScene.KEY, Object.assign({tutorial: Tutorial.ITEMS}, this.params));
             }),
-            createButton(this, 0, 48, '  Бонусы', () => {
-                this.scene.start(GameScene.KEY, Object.assign({tutorial: Tutorial.POWER_UPS}, this.params))
+            createButton(this, 0, 48, '    Бонусы', () => {
+                this.scene.start(TutorialDescriptionScene.KEY, Object.assign({tutorial: Tutorial.POWER_UPS}, this.params));
             }),
             createButton(this, 0, config.height - 11, "В меню", goToMenu),
         ];

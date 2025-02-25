@@ -120,6 +120,10 @@ class GameScene extends Phaser.Scene {
                 this.warehouse.stacker.coordinates = new Coordinates(7, 7, 0);
 
                 let addGreenBox = () => {
+                    const item = this.warehouse.stacker.item;
+                    if (item && item.type === ItemType.HOUR_GLASS && this.warehouse.usingItem) {
+                        return;
+                    }
                     this.warehouse.addEntity(new Box(Color.GREEN, new Coordinates(0, 0, 7)));
                 };
                 addGreenBox();
@@ -363,7 +367,7 @@ class GameScene extends Phaser.Scene {
 
         setTimeout(() => {
             this.scene.start(MenuScene.KEY);
-        }, 3000);
+        }, 5000);
     }
 
     fixedUpdate() {
@@ -454,6 +458,9 @@ class GameScene extends Phaser.Scene {
         } else if (pressedKey === this.cursorKeys.left) {
             this.warehouse.moveStacker(Direction.WEST);
         } else if (pressedKey === this.cursorKeys.shift) {
+            if (!this.warehouse.stacker.item || this.warehouse.usingItem) {
+                return;
+            }
             this.warehouse.useItemStacker();
             if (this.warehouse.stacker.item && this.warehouse.usingItem) {
                 let i = 0;

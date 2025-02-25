@@ -3,7 +3,16 @@ const config = {
     width: 132,
     height: 176,
     backgroundColor: 0x000000,
-    scene: [PreloadScene, MenuScene, HighscoreScene, SettingsScene, TutorialsListScene, CharacterSelectionScene, GameScene],
+    scene: [
+        PreloadScene,
+        MenuScene,
+        HighscoreScene,
+        SettingsScene,
+        TutorialsListScene,
+        TutorialDescriptionScene,
+        CharacterSelectionScene,
+        GameScene
+    ],
     parent: 'gameContainer',
     pixelArt: true,
 
@@ -11,8 +20,8 @@ const config = {
         smoke: 0xDDDDDD,
         text: 0x101010,
         button: {
-            text: 0x221100,
-            selected: 0x333399,
+            text: 0x111100,
+            selected: 0x3333BB,
             default: 0x222277,
         },
         gameOver: {
