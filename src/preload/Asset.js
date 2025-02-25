@@ -1,4 +1,6 @@
 class Asset {
+    static BANNERS_RIGHT = "banners/banners_right";
+    static BANNERS_LEFT = "banners/banners_left";
     static CHECKBOX_NO = "buttons/no_s";
     static CHECKBOX_YES = "buttons/yes_s";
     static BOXES = "entities/boxes";
@@ -48,6 +50,8 @@ class Asset {
     static SPLASH = "splash";
 
     static load(scene) {
+        Asset.loadSpriteSheet(scene, Asset.BANNERS_RIGHT, {frameWidth: 43, frameHeight: 58});
+        Asset.loadSpriteSheet(scene, Asset.BANNERS_LEFT, {frameWidth: 43, frameHeight: 58});
         Asset.loadImage(scene, Asset.CHECKBOX_NO);
         Asset.loadImage(scene, Asset.CHECKBOX_YES);
         Asset.loadImage(scene, Asset.SPLASH);

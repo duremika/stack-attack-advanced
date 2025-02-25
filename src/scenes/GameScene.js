@@ -218,6 +218,8 @@ class GameScene extends Phaser.Scene {
             this.backgroundMusic.play();
         }
         this.add.sprite(0, 0, Asset.BACKGROUND).setOrigin(0, 0);
+        this.add.sprite(12, 19, Asset.BANNERS_LEFT, 0).setOrigin(0, 0);
+        this.add.sprite(93, 67, Asset.BANNERS_RIGHT, 2).setOrigin(0, 0);
         this.add.sprite(0, 0, Asset.HUD_TOP, 0).setOrigin(0, 0);
         this.scoreSprites = [];
         for (let i = 0; i < 6; i++) {
