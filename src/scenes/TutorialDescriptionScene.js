@@ -12,6 +12,7 @@
 
     create() {
         this.add.rectangle(0, 0, config.width, config.height, config.color.smoke)
+            .setAlpha(config.color.smokeAlpha)
             .setOrigin(0, 0);
         this.text = this.add.bitmapText(0, 0, Asset.FONT_BASIS33,
             strings[this.params.lang][this.params.tutorial.description+'Description'], 16)

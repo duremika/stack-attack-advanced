@@ -11,6 +11,8 @@ class MenuScene extends Phaser.Scene {
     }
 
     create() {
+        this.add.rectangle(0, 0, config.width, config.height, 0x000000)
+            .setOrigin(0, 0);
         this.add.image(1, 0, Asset.SPLASH).setOrigin(0);
 
         this.buttons = [

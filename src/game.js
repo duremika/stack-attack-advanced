@@ -2,7 +2,7 @@ const config = {
     type: Phaser.AUTO,
     width: 132,
     height: 176,
-    backgroundColor: 0x000000,
+    transparent: true,
     scene: [
         PreloadScene,
         MenuScene,
@@ -18,6 +18,7 @@ const config = {
 
     color: {
         smoke: 0xDDDDDD,
+        smokeAlpha: 0.73,
         text: 0x101010,
         button: {
             text: 0x111100,

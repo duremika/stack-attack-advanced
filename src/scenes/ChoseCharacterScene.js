@@ -19,6 +19,7 @@
     create() {
         this.score = this.params.repository.get(Repository.MY_SCORE);
         this.add.rectangle(0, 0, config.width, config.height, config.color.smoke)
+            .setAlpha(config.color.smokeAlpha)
             .setOrigin(0, 0);
         this.selectedCharacterIndex = 0;
         this.selectedCharacter = this.add.image(config.width / 2, 0, Asset.PORTRAIT_RED)

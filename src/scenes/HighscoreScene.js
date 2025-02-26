@@ -11,6 +11,7 @@
 
     create() {
         this.add.rectangle(0, 0, config.width, config.height, config.color.smoke)
+            .setAlpha(config.color.smokeAlpha)
             .setOrigin(0, 0);
         this.add.bitmapText(5, 20, Asset.FONT_BASIS33, strings[this.params.lang].myHighscore, 16)
             .setTint(0x000000)
