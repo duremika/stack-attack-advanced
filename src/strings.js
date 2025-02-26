@@ -1,7 +1,7 @@
 ﻿function getLang() {
     let lang = navigator.language.substring(0, 2);
     if (!strings[lang]) {
-        lang = "ru";
+        lang = "en";
     }
     return lang;
 }
@@ -32,7 +32,7 @@ const strings = {
             "Стрелки - для\nдвижения.\nПробел - для\nпрыжка",
         removeBoxesDescription: "Очистите склад\n\nУничтожьте все\nящики, выстраивая\n" +
             "комбинации\nпо цвету или\nзаполняя ряды",
-        bombsDescription: "Используйте бомбы,\nчтобы забрать\nсердце.\n\n" +
+        bombsDescription: "Используйте бомбы\n(shift), чтобы\nзабрать сердце.\n\n" +
             "Серая бомба -\nвзрывает всё\nвокруг грузчика.\nЦветная бомба -\nуничтожает ящики\nсоответствующего\nцвета",
         itemsDescription: "Очистите склад\n\nМолоток -\nразбивает предмет\nвпереди.\n" +
             "Магнит -\nпритягивает\nпредмет впереди.\nПесочные часы -\nостанавливают\nпоявление новых\nпредметов",
@@ -69,7 +69,7 @@ const strings = {
             "Arrow keys - for\nmovement.\nSpace - for\njumping",
         removeBoxesDescription: "Clear the\nwarehouse\n\nDestroy all boxes\nby creating color\n" +
             "combinations or\nfilling rows",
-        bombsDescription: "Use bombs to\ncollect the heart.\n\n" +
+        bombsDescription: "Use bombs (shift)\nto collect the\nheart.\n\n" +
             "Gray bomb -\nremoves all\naround the\nstacker.\nColored bomb -\ndestroys boxes of\nthe corresponding\ncolor",
         itemsDescription: "Clear the\nwarehouse\n\nHammer - breaks\nthe object\nin front.\n" +
             "Magnet - attracts\nthe object\nin front.\nHourglass - stops\nnew items from\nappearing",
