@@ -99,21 +99,21 @@ class Asset {
     }
 
     static loadImage(scene, name) {
-        scene.load.image(name, "/assets/" + name + ".png");
+        scene.load.image(name, "assets/" + name + ".png");
     }
 
     static loadSpriteSheet(scene, name, frameConfig) {
         if (!frameConfig) {
             frameConfig = {frameWidth: 16, frameHeight: 19};
         }
-        scene.load.spritesheet(name, "/assets/" + name + ".png", frameConfig);
+        scene.load.spritesheet(name, "assets/" + name + ".png", frameConfig);
     }
 
     static loadBitmapFont(scene, name) {
-        scene.load.bitmapFont(name, '/assets/' + name + '.png', '/assets/' + name + '.xml');
+        scene.load.bitmapFont(name, 'assets/' + name + '.png', 'assets/' + name + '.xml');
     }
 
     static loadMusic(scene, name) {
-        scene.load.audio(name, '/assets/' + name + '.wav');
+        scene.load.audio(name, 'assets/' + name + '.wav');
     }
 }
